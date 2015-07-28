@@ -9,9 +9,11 @@ namespace CCSD.Tests
     {
         [TestMethod]
         [DeploymentItem("data/ccsd.csv")]
-        public void CanReadTestFile()
+        public void CodesAreParsedCorrectly()
         {
-            var ccsd = File.ReadAllLines("ccsd.csv");
+            var parser = new ClinicalCodesParser();
+            var codes = parser.Parse("ccsd.csv");
+            Assert.AreEqual(2732, codes.Count);
         }
     }
 }
